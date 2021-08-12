@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengesService } from '../challenges.service';
 import { Challenge } from './challenge.model';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-challengeinfo',
   templateUrl: './challengeinfo.page.html',
@@ -10,18 +10,25 @@ import { Challenge } from './challenge.model';
 })
 export class ChallengeinfoPage implements OnInit {
 
-  challenge: Challenge;
- 
+  public challenge: Challenge;
+  public location: Location;
+  public idChallenge: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private challengesService=ChallengesService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    public challengesService: ChallengesService,
+    public router: Router
+  ) {
+
+    //console.log(this.location.path());
+
+    this.idChallenge=this.activatedRoute.snapshot.paramMap.get('challengeId')
+
+    this.challenge = this.challengesService.getChallenge(this.idChallenge); // Autogenerado
+
+    console.log(this.challenge);
+  }
 
   ngOnInit() {
-
-    this.activatedRoute.paramMap.subscribe(paramMap =>{
-      // Validation if(!paramMap)
-      const recipedId=paramMap.get('challengeId') 
-      this.challenge=this.challengesService.getChallenge(recipedId); // Autogenerado
-      console.log('challengeId') 
-    })
-  } 
+  };
 }

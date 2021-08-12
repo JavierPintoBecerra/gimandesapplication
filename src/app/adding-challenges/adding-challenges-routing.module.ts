@@ -11,6 +11,16 @@ const routes: Routes = [
   {
     path: 'challengeinfo',
     loadChildren: () => import('./challengeinfo/challengeinfo.module').then( m => m.ChallengeinfoPageModule)
+  },
+  {
+    path: '1',
+    redirectTo:'challengeinfo',
+    pathMatch: 'prefix'
+  },
+  {
+    path: '2',
+    redirectTo:'challengeinfo',
+    pathMatch: 'prefix'
   }
 ];
 
