@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adding Challenges</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let challenge of challenges" [routerLink]="['/adding-challenges', challenge.id]">
+
+      <ion-avatar slot="start">
+        <ion-img [src]="challenge.imageURL"> </ion-img> 
+      </ion-avatar>
+      <ion-label>
+        {{challenge.title}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
