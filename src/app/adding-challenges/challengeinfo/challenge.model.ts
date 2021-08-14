@@ -2,5 +2,6 @@ export interface Challenge{
     id: string,
     title: string, 
     imageURL: string,
-    description: string[]
+    description: string[],
+    challengeState:string
 }

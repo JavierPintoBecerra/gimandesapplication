@@ -30,5 +30,9 @@ export class ChallengeinfoPage implements OnInit {
   }
 
   ngOnInit() {
+    //There are some differences between this and Fazt's program 
   };
+  updateChallenge(){
+    console.log('Challenges Updated!!')
+  }
 }

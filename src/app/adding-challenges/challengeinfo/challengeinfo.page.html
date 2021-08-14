@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/adding-challenges">      </ion-back-button>
     </ion-buttons>
     <ion-title>{{challenge.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="updateChallenge()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +16,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-img [src]="challenge.imageURL" class="gif_sizing"></ion-img>
+        <ion-img [src]="challenge.imageURL" class="gif_sizing" style="zoom:0.5"></ion-img>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -28,5 +33,20 @@
         </p>
       </ion-col>
     </ion-row>
+    <ion-list>
+      <ion-item>
+        <ion-label>Challenge completed</ion-label>
+        <ion-checkbox slot="end" ></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item >
+        <ion-button color="success" (click)="updateChallenge()">Done! </ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label>MM DD YY</ion-label>
+      <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+    </ion-item>
   </ion-grid>
 </ion-content>
