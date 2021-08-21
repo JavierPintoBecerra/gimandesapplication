@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/adding-challenges">      </ion-back-button>
+      <ion-back-button defaultHref="/adding-challenges"></ion-back-button>
     </ion-buttons>
     <ion-title>{{challenge.title}}</ion-title>
     <ion-buttons slot="end">
@@ -13,10 +13,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
+  <ion-grid class="ion-no-padding" *ngIf="challenge.challengeState && challenge.challengeState == myDate; else disabled">
+    <ion-row >
       <ion-col>
-        <ion-img [src]="challenge.imageURL" class="gif_sizing" style="zoom:0.5"></ion-img>
+        <ion-img [src]="challenge.imageURL" class="gif_sizing, ion-no-padding" style="zoom:0.5"></ion-img>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -45,8 +45,13 @@
       </ion-item>
     </ion-list>
     <ion-item>
-      <ion-label>MM DD YY</ion-label>
-      <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+      <ion-datetime displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY" [(ngModel)]="myDate"></ion-datetime>
     </ion-item>
+   
   </ion-grid>
+  <ng-template #disabled>
+    <ion-text>
+      <p>This challenge is not available</p>
+    </ion-text>
+  </ng-template>
 </ion-content>

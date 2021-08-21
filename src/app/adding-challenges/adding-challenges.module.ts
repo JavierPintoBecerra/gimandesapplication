@@ -18,3 +18,5 @@ import { AddingChallengesPage } from './adding-challenges.page';
   declarations: [AddingChallengesPage]
 })
 export class AddingChallengesPageModule {}
+
+

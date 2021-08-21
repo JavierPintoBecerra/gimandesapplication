@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengesService } from '../challenges.service';
 import { Challenge } from './challenge.model';
 import { Location } from '@angular/common';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-challengeinfo',
   templateUrl: './challengeinfo.page.html',
@@ -17,7 +18,7 @@ export class ChallengeinfoPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     public challengesService: ChallengesService,
-    public router: Router
+    public router: Router, private alertctrl:AlertController  
   ) {
 
     //console.log(this.location.path());
@@ -32,7 +33,26 @@ export class ChallengeinfoPage implements OnInit {
   ngOnInit() {
     //There are some differences between this and Fazt's program 
   };
-  updateChallenge(){
-    console.log('Challenges Updated!!')
+  async updateChallenge(){
+    const alertElement=await this.alertctrl.create({
+      header: 'did you complete the challenge?',
+      message: 'Click ok if you already completed the challenge',
+      buttons: [
+        {
+          text: 'Cancel', 
+          role: 'cancel'
+        },
+        {
+          text: 'OK', 
+          handler: ()=>{
+            console.log('Challenges Updated!!'); 
+          }
+        }
+
+      ]
+    });
+    await alertElement.present(); 
   }
+  public myDate: String = new Date().toISOString(); // Date  for restricting acces acordin to date
+  
 }

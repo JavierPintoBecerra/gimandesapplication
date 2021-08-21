@@ -22,4 +22,8 @@ export class AddingChallengesPage implements OnInit {
     this.router.navigate([`../adding-challenges/challengeinfo`,{challengeId:id}])
   }
 
+  goToHome(){
+    this.router.navigate(['/home'])
+  }
+
 }
